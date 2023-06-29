@@ -21,7 +21,7 @@ Here is the technical description of the virtual machine cloud instances deploye
 
 ### Installation Guides
 - Server Administration [guide](admin/README.md)
-- ETL Environment [guid](etl/README.md)
+- ETL Environment [guide](etl/README.md)
 
 
 ### Acknowledgment
