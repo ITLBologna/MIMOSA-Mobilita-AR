@@ -1,4 +1,4 @@
-![alt text](resources/banner.png)
+![banner](resources/banner.png)
 
 ## MIMOSA Mobilità AR
 
