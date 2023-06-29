@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-table
+{
+  background-color:transparent!important;
+}
+table
+{
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5em;
+  color: #374151;
+  font-weight: 500;
+
+}
+.table-text
+{
+  color: #353e4d;
+  font-weight: 500;
+  font-size: larger;
+}
+.table-link
+{
+  text-decoration: underline;
+  :hover {
+    color: #fcc204;
+  }
+}
+table tr:last-child td /*To remove the last border*/
+{
+  border-bottom:0 solid
+}
+.active-tab
+{
+  border-bottom: 4px solid #fcc204;
+}
+

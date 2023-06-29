@@ -1,0 +1,73 @@
+<div class="px-2 pb-8">
+    <div class="mt-4 flex justify-between">
+        <h1>Statistiche sondaggio: {{ pollReport?.title }}</h1>
+        <button class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" type="button" (click)="navigateBack()">Indietro</button>
+    </div>
+    <div class="border-b-2 border-primary">
+        <div class="text-lg my-2"><strong>Descrizione: </strong>{{ pollReport?.description }}</div>
+        <span class="text-lg"><strong>Stato: </strong>{{ pollReport?.poll_status | pollStatus }}</span>
+    </div>
+    <div class="w-4/5 m-auto mt-2">
+        <div class="grid grid-cols-8">
+            <div class="text-center col-start-3 col-span-4">
+                <h2 class="text-2xl font-bold leading-10 tracking-tight text-gray-900">Domande</h2>
+                <div class="text-lg text-gray-900">Numero totale utenti: {{ pollReport?.poll_completed }}</div>
+            </div>
+            <div class="col-start-7 col-span-2 text-right">
+                <button class="inline-flex items-center rounded-md border border-transparent bg-primary px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-offset-2"
+                    (click)="downloadExcel()">
+                    <div class="flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                          </svg>                          
+                      <div>
+                        Esporta in excel
+                      </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+        <div class="border-gray-200 utility-dark-color rounded-2xl shadow-md p-8 mt-4">
+            <ng-container *ngFor="let question of pollReport?.reports; let questionIndex = index">
+                <dl class="mt-10 space-y-6 border-t-2 border-gray-200 py-4"> 
+                    <dt>
+                        <button type="button" (click)="showStatistics(questionIndex)" class="flex w-full items-start justify-between text-left text-gray-900" aria-controls="faq-0" aria-expanded="false">
+                            <span class="text-base font-semibold leading-7">{{question.question_text}}</span>
+                            <span class="ml-6 flex h-7 items-center">
+                                <svg class="h-6 w-6" *ngIf="visibleArray.includes(questionIndex)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+                                </svg>
+                                <svg class="h-6 w-6" *ngIf="!visibleArray.includes(questionIndex)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+                                </svg>
+                            </span>
+                        </button>
+                    </dt>
+                    <dd class="mt-2 pr-12" *ngIf="visibleArray.includes(questionIndex)" id="faq-0">
+                        <ng-container *ngIf="question.question_type == 'closed_answer'">
+                            <ng-container *ngFor="let answer of question.closed_answers">
+                                <div class="grid grid-cols-2">
+                                    <div>. {{answer.answer_option_text}}</div> 
+                                    <div>{{answer.number_of_answers}}</div>
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                        <ng-container *ngIf="question.question_type == 'multiple_answer'">
+                            <ng-container *ngFor="let answer of question.multiple_answers">
+                                <div class="grid grid-cols-2">
+                                    <div>. {{answer.answer_option_text}}</div>
+                                    <div>{{answer.number_of_answers}}</div>
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                        <ng-container *ngIf="question.question_type == 'free_answer'">
+                            <ng-container *ngFor="let answer of question.free_answers">
+                                <div>. {{answer.answer_text}}</div>
+                            </ng-container>
+                        </ng-container>
+                    </dd>
+                </dl>
+            </ng-container>
+        </div>
+    </div>
+</div>

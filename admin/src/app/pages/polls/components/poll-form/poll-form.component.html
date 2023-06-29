@@ -1,0 +1,127 @@
+<div>
+    <div class="mt-4 px-2 flex justify-between">
+        <h1>{{ pollId ? 'Modifica' : 'Crea'}} Sondaggio</h1>
+        <button class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" type="button"  (click)="navigateBack()">Indietro</button>
+    </div>
+    <div class="flex justify-center mt-4 sp-2 space-x-2 bg-gray-100 min-h-screen">
+        <div class="w-full lg:w-2/3">
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                <label for="title" class="block font-medium mt-4">Titolo</label>
+                <div class="mt-1 sm:col-span-2 sm:mt-0">
+                    <input
+                        id="title"
+                        type="text"
+                        [(ngModel)]="pollRequest.title"
+                        class="block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary focus:ring-2 focus:outline-none text-base my-2"
+                        />
+                </div>
+            </div>
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                <label for="description" class="block font-medium mt-4">Descrizione</label>
+                <div class="mt-1 sm:col-span-2 sm:mt-0">
+                    <input
+                        id="description"
+                        type="text"
+                        [(ngModel)]="pollRequest.description"
+                        class="block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary focus:ring-2 focus:outline-none text-base my-2"/>
+                </div>
+            </div>
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                <label for="timeToShow" class="block font-medium mt-4">Dopo quante ore, dall'installazione dell'app, viene mostrato il sondaggio</label>
+                <div class="mt-1 sm:col-span-2 sm:mt-0">
+                    <input
+                        id="timeToShow"
+                        type="number"
+                        [(ngModel)]="pollRequest.time_to_show"
+                        class="block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary focus:ring-2 focus:outline-none text-base my-2"/>           
+                </div>
+            </div>
+            <div class="mt-4">
+            <ng-container *ngFor="let questionItem of pollRequest.questions; let questionIndex = index">
+                <div class="my-12 py-4 border-y-2 border-gray-300">
+                    <div class="grid grid-cols-4">
+                        <h2 class="col-start-2 col-span-2 text-center mt-4">Domanda numero: {{questionIndex + 1}}</h2>
+                        <div class="text-red-600 cursor-pointer flex justify-end" (click)="removeQuestion(questionIndex)">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>                              
+                        </div>
+                    </div>
+                    <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:pt-5">
+                        <label for="question_type" class="block font-medium mt-4">Scegli il tipo domanda: </label>
+                        <div class="mt-1 sm:col-span-2 sm:mt-0">
+                            <select id="question_type" 
+                            [(ngModel)]="pollRequest.questions[questionIndex].question_type"
+                            class="block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary focus:ring-2 focus:outline-none text-base my-2">
+                                <option value="free_answer">Domanda aperta</option>
+                                <option value="closed_answer">Domanda a risposta singola</option>
+                                <option value="multiple_answer">Domanda a risposta multipla</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:pt-5">
+                        <label for="question-{{questionIndex}}" class="block font-medium mt-4">Domanda</label>
+                        <div class="mt-1 sm:col-span-2 sm:mt-0">
+                            <input 
+                                type="text" 
+                                id="question-{{questionIndex}}" 
+                                [(ngModel)]="pollRequest.questions[questionIndex].text" 
+                                class="block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary focus:ring-2 focus:outline-none text-base my-2"/>
+                        </div>
+                    </div>
+                    <div *ngIf="pollRequest.questions[questionIndex].question_type == 'closed_answer' || pollRequest.questions[questionIndex].question_type == 'multiple_answer'" class="mt-2">
+                        <ng-container *ngFor="let answerItem of pollRequest.questions[questionIndex].answer_options; let answerIndex = index">
+                            <div class="my-12 py-4 border-y-2 border-gray-200">
+                                <div class="sm:grid sm:grid-cols-4 sm:items-start sm:gap-4 sm:pt-5">
+                                    <label class="block font-medium mt-2">Opzione numero: {{answerIndex + 1}}</label>
+                                    <div class="mt-1 sm:col-span-2 sm:mt-0">
+                                        <input 
+                                            type="text" 
+                                            id="answer-{{answerIndex}}"
+                                            [(ngModel)]="pollRequest.questions[questionIndex].answer_options?.[answerIndex]!.text"
+                                            class="block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary focus:ring-2 focus:outline-none text-base my-2"/>
+                                    </div>
+                                    <div class="text-red-600 cursor-pointer flex justify-center items-center h-full" (click)="removeAnswer(questionIndex, answerIndex)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>                              
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                        <div class="flex justify-end mt-4">
+                            <button class="inline-flex items-center rounded-md border border-transparent bg-gray-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2" type="button" (click)="addAnswer(questionIndex)">
+                                <div class="flex space-x-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <div>
+                                            Aggiungi risposta
+                                        </div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <div class="mt-4 flex justify-end sticky top-10 z-20">
+                <button class="inline-flex items-center rounded-md border border-transparent bg-gray-500 text-white px-4 py-2 text-base font-medium shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2" 
+                    type="button" 
+                    (click)="addQuestion()">
+                    <div class="flex space-x-2 items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <div>
+                                Aggiungi domanda
+                            </div>
+                    </div>
+                </button>
+            </div>
+            </div>
+            <div class="my-12 flex justify-end" *ngIf="pollRequest.questions.length > 0">
+                <button class="inline-flex items-center rounded-md border border-transparent bg-primary px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-offset-2" type="button" (click)="handleSubmit()">{{pollId ? 'Aggiorna' : 'Crea' }} sondaggio</button>
+            </div>
+        </div>
+    </div>
+</div>    

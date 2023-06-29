@@ -1,0 +1,483 @@
+{
+  "welcome": "Welcome in Mimosa",
+  "@welcome": {
+    "description": "Welcome Page title"
+  },
+  "accept_button": "Accept",
+  "@accept_button": {
+    "description": "Accept button"
+  },
+  "accepted_button": "Accepted",
+  "@accepted_button": {
+    "description": "Accepted button"
+  },
+  "continue_button": "Continue",
+  "@continue_button": {
+    "description": "Continue button"
+  },
+  "checking_auth": "Checking permissions...",
+  "@checking_auth": {
+    "description": "Welcome Page checking permissions"
+  },
+  "location_services_disabled": "Location services are disabled.\nOpen _*Settings*_ and enable location services. Once done, come back and refresh page.",
+  "@location_services_disabled": {
+    "description": "Shown in LocationPermissionsPage when Location Services are disabled"
+  },
+  "location_services_disabled_ios": "Location services are disabled.\nOpen _*Settings*_ > _*Privacy*_ and enable location services. Once done, come back and refresh page.",
+  "@location_services_disabled_ios": {
+    "description": "Shown in LocationPermissionsPage when iOS Location Services are disabled"
+  },
+  "location_access_permanently_denied": "Mimosa needs to access your location even when the app is not in use to help you in your trips.\nTap _*Settings*_, select _*Permissions*_ > _*Location*_ > _*Allow all the time*_.",
+  "@location_access_permanently_denied": {
+    "description": "Shown in LocationPermissionsPage when Location Services are disabled"
+  },
+  "location_access_denied": "Mimosa needs to access your location even when the app is not in use to help you in your trips. Tap on _*Allow*_, choose _*While using app*_ e then _*Allow always*_",
+  "@location_access_denied": {
+    "description": "Shown in LocationPermissionsPage when Location Services are denied (i.e. first time user open the app)"
+  },
+  "location_access_permanently_denied_ios": "Mimosa needs to access your location even when the app is not in use to help you in your trips.\nTap _*Settings*_ > _*Location*_ > _*Always*_. Once done, come back and refresh page.",
+  "@location_access_permanently_denied_ios": {
+    "description": "Shown in LocationPermissionsPage when Location Services are disabled"
+  },
+  "location_access_denied_ios": "Mimosa needs to access your location even when the app is not in use to help you in your trips. Tap _*Allow*_, choose _*Allow While Using App*_ and then _*Change to Allow Always*_",
+  "@location_access_denied_ios": {
+    "description": "Shown in LocationPermissionsPage when Location Services are denied (i.e. first time user open the app)"
+  },
+  "allow": "Allow",
+  "@allow": {
+    "description": "Allow button text"
+  },
+  "launching": "Launching...",
+  "@launching": {
+    "description": "Launching text after all permissions requests"
+  },
+  "camera_access_permanently_denied": "Mimosa needs access to your camera. Go to _*Settings*_, select _*Authorizations*_ > _*Camera*_ and _*While using the app*_",
+  "@camera_access_permanently_denied": {
+    "description": "Camera access permanently denied message"
+  },
+  "activity_access_permanently_denied": "Mimosa needs to monitor your physical activity to detect if you are moving by vehicles. Go to _*Settings*_, select _*Authorizations*_ > _*Physical activity*_ and _*Allow*_",
+  "@activity_access_permanently_denied": {
+    "description": "Activity access permanently denied message"
+  },
+  "activity_access_denied": "Mimosa needs to monitor your physical activity to detect if you are moving by vehicles. Tap on _*Allow*_, and select _*Allow*_",
+  "@activity_access_denied": {
+    "description": "Activity access denied message"
+  },
+  "camera_access_permanently_denied_ios": "Mimosa needs access to your camera. Go to _*Settings*_, select _*Authorizations*_ > _*Camera*_ and _*While using the app*_",
+  "@camera_access_permanently_denied_ios": {
+    "description": "Camera access permanently denied iOS message"
+  },
+  "camera_access_denied": "Mimosa needs access to your camera. Tap _*Allow*_, and select _*While using the app*_",
+  "@camera_access_denied": {
+    "description": "Camera access denied message"
+  },
+  "camera_access_denied_ios": "Mimosa needs access to your camera. Tap _*Allow*_, and select _*While using the app*_",
+  "@camera_access_denied_ios": {
+    "description": "Camera access denied iOS message"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Settings label"
+  },
+  "error": "Error",
+  "@error": {
+    "description": "Error label"
+  },
+  "local_storage_initialization_error": "Error initializing local storage",
+  "@local_storage_initialization_error": {
+    "description": "Error intializing local storage"
+  },
+  "unable_to_track": "Your device does not support tracking.",
+  "@unable_to_track": {
+    "description": "Error shown when device does not have gps"
+  },
+  "unknown_version": "unknown version",
+  "@unknown_version": {
+    "description": "Shown under home page title when unable to read Mimosa app version"
+  },
+  "where_are_you_going": "Where are you going?",
+  "@where_are_you_going": {
+    "description": "First home page card title"
+  },
+  "go": "Go!",
+  "@go": {
+    "description": "First home page card button"
+  },
+  "go_to_bus_lines": "Go to bus lines!",
+  "@go_to_bus_lines": {
+    "description": "Second home page card button"
+  },
+  "itineraries": "Itineraries",
+  "@itineraries": {
+    "description": "Itineraries page title"
+  },
+  "bus_lines": "Bus lines",
+  "@bus_lines": {
+    "description": "Bus lines page title"
+  },
+  "no_bus_line_found": "No bus line found",
+  "@no_bus_line_found": {
+    "description": "Shown when line search gives no result"
+  },
+  "survey": "Survey",
+  "@survey": {
+    "description": "Survey page title"
+  },
+  "suggestions": "Suggestions",
+  "@suggestions": {
+    "description": "Suggestions page title"
+  },
+  "web_guide": "Help",
+  "@web_survey": {
+    "description": "Help page title"
+  },
+  "no_solution_found": "No solution found",
+  "@no_solution_found": {
+    "description": "Shown when OTP do not find any result"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel label"
+  },
+  "camera_error": "Camera error.",
+  "@camera_error": {
+    "description": "Shown when an error occur accessing camera"
+  },
+  "compass_needs_calibration": "To view more accurate data, calibrate your compass",
+  "@compass_needs_calibration": {
+    "description": "Shown in Android when compass inaccurate warning arise"
+  },
+  "ok": "OK",
+  "data_request_error": "Error while requesting data to server: {errorMessage}",
+  "@data_request_error": {
+    "description": "Shown when an error occur during an api request",
+    "placeholders": {
+      "errorMessage": {
+        "type": "String",
+        "example": "Server internal error"
+      }
+    }
+  },
+  "digit_your_destination": "Digit your destination",
+  "@digit_your_destination": {
+    "description": "Placeholder in Where are you going text field"
+  },
+  "unavailable_departure_time": "Departure time unavailable",
+  "@unavailable_departure_time": {
+    "description": "Shown in trip info widget when no departure time is available"
+  },
+  "time_format": "Hm",
+  "hour_placemark": "h",
+  "minute_placemark": "min",
+  "ago_placemark": "ago",
+  "departure_from_placemark": "from",
+  "android_notification_title": "Mimosa has access to your location",
+  "android_location_service_error": "Something went wrong when trying to setup location background notification data",
+  "@android_notification_title": {
+    "description": "Shown in Android if location background service setup went wrong"
+  },
+  "no_tips_found_for_selected_route": "No trips found for selected route",
+  "@no_tips_found_for_selected_route": {
+    "description": "Shown when the server returns no trips for a certain route"
+  },
+  "check_in_start": "Start",
+  "@check_in_start": {
+    "description": "Text of the action button which starts playing"
+  },
+  "check_in": "Start playing to collect points and climb Mimosa ranking level!",
+  "@check_in": {
+    "description": "Button text in fullscreen stop annotation if user is not checked-in"
+  },
+  "go_to_another_stop_to_checkout": "Well done! Now take the bus, reach your destination stop and claim your prize!",
+  "@go_to_another_stop_to_checkout": {
+    "description": "Text shown when user has already checked-in the current stop"
+  },
+  "go_to_otp_end_stop_to_checkout": "Well done! Now reach {stopName} ({stopCode}) bus stop and claim your prize!",
+  "@go_to_otp_end_stop_to_checkout": {
+    "description": "Text shown when user has already checked-in the current stop and is in a planned trip"
+  },
+  "check_out_claim": "Claim",
+  "@check_out_claim": {
+    "description": "Text of the action button which ends playing and claims points"
+  },
+  "check_out": "Great! Claim your prize!",
+  "@check_out": {
+    "description": "Button text in fullscreen stop annotation when use is checked-in and stop is not checked-in stop"
+  },
+  "privacy_policy_link_text": "Privacy policy",
+  "@privacy_policy_link_text": {
+    "description": "Shown in home page, near the bottom"
+  },
+  "close": "Close",
+  "@close": {
+    "description": "Close text"
+  },
+  "playing_title": "You are playing!",
+  "@playing_title": {
+    "description": "Used in playing info dialog title"
+  },
+  "cancel_check_in": "Quit",
+  "@cancel_check_in": {
+    "description": "Used in playing info dialog to allow user to cancel check-in"
+  },
+  "check_in_text": "Start",
+  "@check_in_text": {
+    "description": "Start literal"
+  },
+  "check_out_text": "Stop",
+  "@check_out_text": {
+    "description": "Stop literal"
+  },
+  "check_out_instructions": "Reach your bus stop and collect points!",
+  "@check_out_instructions": {
+    "description": "Used in playing info dialog to hint next game step"
+  },
+  "check_out_error": "Ops! Something went wrong. Tap to retry.",
+  "@check_out_error": {
+    "description": "Used in checkOutButton when play api call fails"
+  },
+  "congratulations": "Congratulations!",
+  "@congratulations": {
+    "description": "Checkout text greetings"
+  },
+  "leaderboard": "Leaderboard",
+  "@leaderboard": {
+    "description": "Leaderboard page title"
+  },
+  "rank": "Rank",
+  "@rank": {
+    "description": "Rank column title in leaderboard page"
+  },
+  "score": "Score",
+  "@score": {
+    "description": "Score column title in leaderboard page"
+  },
+  "your_user_id": "Your User ID",
+  "@your_user_id": {
+    "description": "User ID dialog title"
+  },
+  "user_id_error": "Error retrieving your User ID",
+  "@user_id_error": {
+    "description": "User ID dialog message error"
+  },
+  "something_went_wrong": "Ops, something went wrong!",
+  "congratulations_points": "You have collected {points} points!",
+  "warning": "Warning",
+  "quit_game_alert_message": "You are running a game. Exit and quit playing?",
+  "remind_play_notification_title": "Hello!",
+  "remind_play_notification_body": "Remind to collect points at your destination bus stop!",
+  "remind_otp_play_notification_body": "Remind to collect points at {stopName} (#{stopCode}) bus stop!",
+  "remind_use_notification_title": "Hello!",
+  "remind_use_notification_body": "It's been a while since we have heard of you. Open Mimosa and plan your next bus trip!",
+  "walk_step_continue": "Continue",
+  "walk_step_left": "Turn left",
+  "walk_step_right": "Turn right",
+  "walk_step_slightly_left": "Turn slightly left",
+  "walk_step_slightly_right": "Turn slightly right",
+  "walk_step_hard_left": "Turn hard left",
+  "walk_step_hard_right": "Turn hard right",
+  "walk_step_uturn_left": "U-Turn left",
+  "walk_step_uturn_right": "U-Turn right",
+  "walk_step_circle_counterclockwise": "Circle counterclockwise",
+  "walk_step_circle_clockwise": "Circle clockwise",
+  "walk_step_north": "north",
+  "walk_step_northeast": "north-east",
+  "walk_step_east": "east",
+  "walk_step_southeast": "south-east",
+  "walk_step_south": "south",
+  "walk_step_southwest": "south-west",
+  "walk_step_west": "west",
+  "walk_step_northwest": "north-west",
+  "walk_step_depart_instruction": "Continue {absoluteDirection} on {streetName}.",
+  "walk_step_stay_on_instruction": "{relativeDirection} to stay on {streetName}.",
+  "walk_step_take_instruction": "{relativeDirection} and take {streetName}.",
+  "walk_step_path": "walk path",
+  "walk_step_bike_path": "bike path",
+  "walk_step_service_road": "service road",
+  "walk_step_footbridge": "footbridge",
+  "walk_step_steps": "steps",
+  "walk_step_sidewalk": "sidewalk",
+  "walk_step_road": "street",
+  "walk_step_parking_isle": "parkin isle",
+  "walk_step_link": "link",
+  "walk_step_open_area": "open area",
+  "radar_satellite_button_bus": "Stops",
+  "radar_satellite_button_directions": "Directions",
+  "trip_stop_annotation_distance_to_stop": "{distance} m • {time} on foot",
+  "trip_stop_annotation_will_arrive_on_time": "You will arrive on time",
+  "trip_stop_annotation_will_arrive_late": "You will arrive late",
+  "trip_stop_bus_early": "early",
+  "trip_stop_bus_late": "late",
+  "guide_welcome_page_title": "Hi",
+  "@guide_welcome_page_title": {
+    "description": "Title of the welcome page of the guide"
+  },
+  "guide_welcome_page_description": "Welcome to Mimosa!",
+  "@guide_welcome_page_description": {
+    "description": "Description of the welcome page of the guide"
+  },
+  "guide_intro_page_title": "What can I do with Mimosa?",
+  "@guide_intro_page_title": {
+    "description": "Title of the intro page of the guide"
+  },
+  "guide_intro_page_description": "You can check real-time bus schedules in Emilia-Romagna, calculate the route to a destination of your choice, and climb the leaderboard, earning points for your travels.",
+  "@guide_intro_page_description": {
+    "description": "Description of the intro page of the guide"
+  },
+  "guide_travel_page_title": "Travel",
+  "@guide_travel_page_title": {
+    "description": "Title of the travel page of the guide"
+  },
+  "guide_travel_page_description": "Select a line to view its routes on the map and their corresponding real-time schedules, or enter an address, choose a route from the options provided, and enjoy your journey!",
+  "@guide_travel_page_description": {
+    "description": "Description of the travel page of the guide"
+  },
+  "guide_ar_page_title": "Augmented Reality",
+  "@guide_ar_page_title": {
+    "description": "Title of the augmented reality page of the guide"
+  },
+  "guide_ar_page_description": "View real-time bus stops and bus locations relative to the surrounding environment, and get information on upcoming bus arrivals, the distance to the stop, and directions on how to reach it.",
+  "@guide_ar_page_description": {
+    "description": "Description of the augmented reality page of the guide"
+  },
+  "guide_consent_page_title": "Privacy Consent",
+  "@guide_consent_page_title": {
+    "description": "Title of the consent page of the guide"
+  },
+  "guide_consent_page_description_1": "Below, you can select the following options to manage your consents regarding the use of your data.",
+  "@guide_consent_page_description_1": {
+    "description": "First description of the tracking page of the guide"
+  },
+  "guide_consent_page_description_2": "Each option refers to the privacy policy.",
+  "@guide_consent_page_description_2": {
+    "description": "Second description of the tracking page of the guide"
+  },
+  "guide_consent_page_suggestions_title": "6.2 - Usage of Data for Local Public Transportation Route Suggestions",
+  "@guide_consent_page_suggestions_title": {
+    "description": "Title of the suggestions button of the consent page of the guide"
+  },
+  "guide_consent_page_gamification_title": "6.3 - Rewards Linked to Local Public Transportation Usage",
+  "@guide_consent_page_gamification_title": {
+    "description": "Title of the gamification button of the consent page of the guide"
+  },
+  "guide_consent_page_survey_title": "6.4 - User Analysis and Transportation Development",
+  "@guide_consent_page_survey_title": {
+    "description": "Title of the survey button of the consent page of the guide"
+  },
+  "guide_consent_page_suggestions_description": "Allow the application to use your data to suggest local public transportation routes based on your location and dynamic interactions within territorial clusters.",
+  "@guide_consent_page_suggestions_description": {
+    "description": "Get suggestions for more efficient routes based on your movements"
+  },
+  "guide_consent_page_gamification_description": "Allow the application to use your data to offer rewards related to your usage of the app and local public transportation, according to the rules specified in the \"Gaming Regulations\".",
+  "@guide_consent_page_gamification_description": {
+    "description": "Get rewards for using the app and local public transportation"
+  },
+  "guide_consent_page_survey_description": "Allow the application to use your data, along with answers of surveys, to create aggregated analysis that will contribute to the development of techniques and tools for regional transportation planning.",
+  "@guide_consent_page_survey_description": {
+    "description": "Contribute to the development of regional transportation planning"
+  },
+  "guide_tracking_page_reminder_snackbar_title": "Select an option",
+  "@guide_tracking_page_reminder_snackbar_title": {
+    "description": "Title of the reminder snackbar of the tracking page of the guide"
+  },
+  "guide_tracking_page_reminder_snackbar_description": "To continue, you must choose whether or not to share your location data.",
+  "@guide_tracking_page_reminder_snackbar_description": {
+    "description": "Description of the reminder snackbar of the tracking page of the guide"
+  },
+  "guide_gamification_page_title": "Play",
+  "@guide_gamification_page_title": {
+    "description": "Title of the play page of the guide"
+  },
+  "guide_gamification_page_description_1": "Record your bus trips and earn points for every distance traveled.",
+  "@guide_gamification_page_description_1": {
+    "description": "First description of the play page of the guide"
+  },
+  "guide_gamification_page_description_2": "Climb the leaderboard!",
+  "@guide_gamification_page_description_2": {
+    "description": "Second description of the play page of the guide"
+  },
+  "guide_gamification_page_description_3": "(In order to play, you must have agreed to share your location)",
+  "@guide_gamification_page_description_3": {
+    "description": "Third description of the play page of the guide"
+  },
+  "guide_notifications_page_title": "One last thing",
+  "@guide_notifications_page_title": {
+    "description": "Title of the notifications page of the guide"
+  },
+  "guide_notifications_page_description": "If you wish, you can enable notifications to receive useful news and updates from Mimosa.",
+  "@guide_notifications_page_description": {
+    "description": "Description of the notifications page of the guide"
+  },
+  "guide_last_page_title": "Everything is ready!",
+  "@guide_last_page_title": {
+    "description": "Title of the last page of the guide"
+  },
+  "guide_general_help_description": "Check the app guide",
+  "@guide_general_help_description": {
+    "description": "Description of the general help of the guide"
+  },
+  "guide_travel_help_description": "Learn more about schedules and the trip planner!",
+  "@guide_travel_help_description": {
+    "description": "Description of the travel help of the guide"
+  },
+  "guide_ar_help_description": "Learn more about Augmented Reality!",
+  "@guide_ar_help_description": {
+    "description": "Description of the augmented reality help of the guide"
+  },
+  "guide_gamification_help_description": "Learn more about the leaderboard!",
+  "@guide_gamification_help_description": {
+    "description": "Description of the play help of the guide"
+  },
+  "guide_location_permission_title": "Mimosa needs access to your location",
+  "@guide_location_permission_title": {
+    "description": "Title of the location permission of the guide"
+  },
+  "guide_location_permission_description": "To show you nearby stops, calculate routes, display buses in augmented reality, and provide useful travel tips.",
+  "@guide_location_permission_description": {
+    "description": "Description of the location permission of the guide"
+  },
+  "guide_camera_permission_title": "Mimosa needs access to your camera",
+  "@guide_camera_permission_title": {
+    "description": "Title of the camera permission of the guide"
+  },
+  "guide_camera_permission_description": "To use Augmented Reality and show you buses and stops in the surrounding environment.",
+  "@guide_camera_permission_description": {
+    "description": "Description of the camera permission of the guide"
+  },
+  "guide_activity_permission_title": "Mimosa needs access to your motion data",
+  "@guide_activity_permission_title": {
+    "description": "Title of the activity permission of the guide"
+  },
+  "guide_activity_permission_description": "To analyze your travel patterns and generate new travel solutions to propose for your future journeys.",
+  "@guide_activity_permission_description": {
+    "description": "Description of the activity permission of the guide"
+  },
+  "guide_notification_permission_title": "Mimosa would like to send you notifications",
+  "@guide_notification_permission_title": {
+    "description": "Title of the notification permission of the guide"
+  },
+  "guide_notification_permission_description": "To stay in touch and help enhancing the application's features.",
+  "@guide_notification_permission_description": {
+    "description": "Description of the notification permission of the guide"
+  },
+  "guide_permission_allow_text": "Allow",
+  "@guide_permission_allow_text": {
+    "description": "Text of the allow permission of the guide"
+  },
+  "guide_permission_allowed_text": "Allowed",
+  "@guide_permission_allowed_text": {
+    "description": "Text of the allowed permission of the guide"
+  },
+  "guide_permission_settings_text": "Go to settings",
+  "@guide_permission_settings_text": {
+    "description": "Text of the settings permission of the guide"
+  },
+  "guide_skip_button": "Skip",
+  "@guide_skip_button": {
+    "description": "Text of the skip button of the guide"
+  },
+  "guide_start_button": "Start",
+  "@guide_start_button": {
+    "description": "Text of the start button of the guide"
+  }
+}

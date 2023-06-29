@@ -1,0 +1,66 @@
+<div class="px-2 pb-8">
+    <div class="mt-4 flex justify-between">
+        <h1>Dettaglio sondaggio: {{ poll?.title }}</h1>
+        <button class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" type="button" (click)="navigateBack()">Indietro</button>
+    </div>
+    <div class="flex justify-between pb-2 border-b-2 border-primary">
+        <div>
+            <div class="text-lg my-2"><strong>Descrizione: </strong>{{ poll?.description }}</div>
+            <span class="text-lg"><strong>Stato: </strong>{{ poll?.poll_status | pollStatus }}</span>
+        </div>
+        <div class="flex justify-between space-x-2 items-end">
+            <div *ngIf="poll?.poll_status == 'draft'">
+                <button 
+                    class="inline-flex items-center rounded-md border border-transparent bg-primary text-gray-700 px-4 py-2 text-base font-medium shadow-sm hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-offset-2" 
+                    (click)="changePollStatus()">Pubblica sondaggio
+                </button>
+            </div>
+            <div *ngIf="poll?.poll_status == 'published' && poll?.is_already_answered == false" class="space-x-2">
+                <button class="inline-flex items-center rounded-md border border-transparent bg-gray-500 text-white px-4 py-2 text-base font-medium shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2" (click)="changePollStatus(true)">Modifica sondaggio</button>
+                <button class="inline-flex items-center rounded-md border border-transparent bg-gray-500 text-white px-4 py-2 text-base font-medium shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2" (click)="changePollStatus()">Chiudi sondaggio</button>
+            </div>
+            <div *ngIf="poll?.poll_status == 'published' && poll?.is_already_answered == true">
+                <button class="inline-flex items-center rounded-md border border-transparent bg-gray-500 text-white px-4 py-2 text-base font-medium shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2" (click)="changePollStatus()">Chiudi sondaggio</button>
+            </div>
+            <div *ngIf="poll?.poll_status == 'closed'">
+                <button class="inline-flex items-center rounded-md border border-transparent bg-primary text-white px-4 py-2 text-base font-medium shadow-sm hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-offset-2" (click)="changePollStatus()">Riapri sondaggio</button>
+            </div>
+            <div>
+                <button class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-red-500 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2" (click)="deletePoll(poll!.poll_id)">Cancella intero sondaggio</button>
+            </div>
+        </div>
+    </div>
+   
+    <div class="w-4/5 m-auto mt-2">
+        <h2 class="text-2xl font-bold leading-10 tracking-tight text-gray-900 text-center">Domande</h2>
+        <ng-container *ngFor="let question of poll?.questions; let questionIndex = index">
+            <dl class="mt-10 space-y-6 border-t-2 border-gray-200 py-4"> 
+                <dt>
+                    <button type="button" (click)="showOptions(questionIndex)" class="flex w-full items-start justify-between text-left text-gray-900" aria-controls="faq-0" aria-expanded="false">
+                        <span class="text-base font-semibold leading-7">{{question.text}}</span>
+                        <span class="ml-6 flex h-7 items-center">
+                            <svg class="h-6 w-6" *ngIf="visibleArray.includes(questionIndex)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+                            </svg>
+                            <svg class="h-6 w-6" *ngIf="!visibleArray.includes(questionIndex)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+                            </svg>
+                        </span>
+                    </button>
+                </dt>
+                <dd class="mt-2 pr-12" *ngIf="visibleArray.includes(questionIndex)" id="faq-0">
+                    <ng-container 
+                        *ngIf="question.question_type == 'closed_answer' || question.question_type == 'multiple_answer'">
+                        <ng-container *ngFor="let answer of question.answer_options">
+                            <div>{{answer.text}}</div>
+                        </ng-container>
+                    </ng-container>
+                    <ng-container *ngIf="question.question_type == 'free_answer'">
+                        Nessuna opzione di risposta.
+                    </ng-container>
+                </dd>
+            </dl>
+        </ng-container>
+    </div>
+    
+</div>

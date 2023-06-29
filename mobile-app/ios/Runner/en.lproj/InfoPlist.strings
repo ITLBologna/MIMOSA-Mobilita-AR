@@ -1,0 +1,13 @@
+/* 
+  InfoPlist.strings
+  Runner
+
+  Created by Luca Girolimetto on 08/02/23.
+  
+*/
+"NSCameraUsageDescription" = "Mimosa uses the camera for Augmented Reality to show you buses and stops in the surrounding environment.";
+"NSLocationWhenInUseUsageDescription" = "Mimosa uses your location to show you nearby stops, calculate routes, display buses in augmented reality, and provide useful travel tips.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Mimosa uses your location to show you nearby stops, calculate routes, display buses in augmented reality, and provide useful travel tips.";
+"NSMotionUsageDescription" = "Mimosa uses motion data to recognize if you are traveling on foot, by bike, or by bus, and suggest alternative solutions.";
+
+

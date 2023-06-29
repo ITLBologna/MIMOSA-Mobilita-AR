@@ -1,0 +1,92 @@
+openapi: 3.0.2
+info:
+  contact:
+    email: support@bitapp.it
+    name: bitApp
+    url: https://bitapp.it
+  title: Mimosa API
+  version: 1.0.0
+servers:
+- description: Local test server
+  url: https://api-mimosa.test.bitapp.dev
+- description: Staging server
+  url: https://api-mimosa.collaudo.bitapp.dev
+- description: Production server
+  url: https://api-mimosa.bitapp.dev
+security:
+- auth:
+  - '*'
+paths:
+  /stops:
+    get:
+      operationId: getAllStops
+      parameters:
+      - description: filter latitude
+        explode: true
+        in: query
+        name: lat
+        required: false
+        schema:
+          format: double
+          type: number
+        style: form
+      - description: filter longitude
+        explode: true
+        in: query
+        name: lon
+        required: false
+        schema:
+          format: double
+          type: number
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StopsResponse'
+          description: The list of stops
+      summary: Get all stops
+      tags:
+      - alerts
+components:
+  schemas:
+    Stop:
+      properties:
+        stop_id:
+          type: string
+        stop_code:
+          type: string
+        stop_name:
+          type: string
+        stop_desc:
+          type: string
+        stop_lat:
+          format: double
+          type: number
+        stop_lon:
+          format: double
+          type: number
+        zone_id:
+          type: string
+      required:
+      - stop_id
+      - stop_name
+      type: object
+    StopsResponse:
+      allOf:
+      - $ref: '#/components/schemas/StopsResponse_allOf'
+    StopsResponse_allOf:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Stop'
+          type: array
+      required:
+      - data
+      type: object
+      example: null
+  securitySchemes:
+    auth:
+      scheme: bearer
+      type: http

@@ -1,0 +1,89 @@
+{
+  "defaultConfigurationType": "defaults",
+  "cacheDurationInSeconds": 180,
+  "privacyPolicyUrl": "https://www.fondazioneitl.org/mimosa-ar/#tab-2c88e51fab5c9891d01",
+  "defaults": {
+    "remindToUseNotificationRepeatInterval": "weekly",
+    "apis": {
+      "useHttps": true,
+      "doRequestsInIsolate": true
+    },
+    "stops": {
+      "maxDistanceInMeters": 600.0,
+      "maxPoi": 10,
+      "minPoi": 5
+    },
+    "tripStops": {
+      "maxDistanceInMeters": 600.0,
+      "maxPoi": 5,
+      "minPoi": 1
+    },
+    "buses": {
+      "maxDistanceInMeters": 1500.0
+    },
+    "ar": {
+      "dyAnnotationsOffsetInScreenPercent": 30,
+      "metersAfterWhichNotifyLocationChange": 5.0,
+      "pinStopWhenCloserThanMeters": 60.0,
+      "markDirectionAsBurnedWhenCloserThanMeters": 20.0,
+      "stopArWhenInBackgroundAfterSeconds": 30,
+      "updateUserPositionAfterSeconds": 2
+    },
+    "tracking": {
+      "enabled": true,
+      "notificationsIntervalInMillisec": 0,
+      "distanceFilterInMeters": 1,
+      "minDistanceToTrackInMeters": 50,
+      "uploadCheckIntervalInSeconds": 60,
+      "minNumberOfTarckingDataToUpload": 100,
+      "maxTimeBetweenUploadsInHours": 12,
+      "maxEntriesToUpload": 5000
+    },
+    "gamification": {
+      "checkInCheckOutMaxDistanceInMeters": 30.0,
+      "remindPlayNotificationAfterMinutes": 60
+    }
+  },
+  "debug": {
+    "remindToUseNotificationRepeatInterval": "weekly",
+    "apis": {
+      "useHttps": true,
+      "doRequestsInIsolate": true
+    },
+    "stops": {
+      "maxDistanceInMeters": 600.0,
+      "maxPoi": 10,
+      "minPoi": 5
+    },
+    "tripStops": {
+      "maxDistanceInMeters": 600.0,
+      "maxPoi": 5,
+      "minPoi": 1
+    },
+    "buses": {
+      "maxDistanceInMeters": 1500.0
+    },
+    "ar": {
+      "dyAnnotationsOffsetInScreenPercent": 30,
+      "metersAfterWhichNotifyLocationChange": 10.0,
+      "pinStopWhenCloserThanMeters": 60.0,
+      "markDirectionAsBurnedWhenCloserThanMeters": 30.0,
+      "stopArWhenInBackgroundAfterSeconds": 30,
+      "updateUserPositionAfterSeconds": 2
+    },
+    "tracking": {
+      "enabled": true,
+      "notificationsIntervalInMillisec": 0,
+      "distanceFilterInMeters": 1,
+      "minDistanceToTrackInMeters": 50,
+      "uploadCheckIntervalInSeconds": 10,
+      "minNumberOfTarckingDataToUpload": 100,
+      "maxTimeBetweenUploadsInHours": 12,
+      "maxEntriesToUpload": 5000
+    },
+    "gamification": {
+      "checkInCheckOutMaxDistanceInMeters": 20.0,
+      "remindPlayNotificationAfterMinutes": 1
+    }
+  }
+}

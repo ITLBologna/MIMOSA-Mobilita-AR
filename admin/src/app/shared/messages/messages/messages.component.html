@@ -1,0 +1,5 @@
+
+
+<div *ngIf="messages && messages.length > 0">
+    <app-message *ngFor="let message of messages" [message]="message"></app-message>
+</div>

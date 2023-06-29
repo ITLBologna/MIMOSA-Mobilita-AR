@@ -1,0 +1,1021 @@
+openapi: 3.0.2
+info:
+  version: 1.3.0
+  title: MIMOSA - API
+  contact:
+    name: bitApp
+    url: https://bitapp.it
+    email: support@bitapp.it
+servers:
+  - url: http://localhost:3000
+    description: Local test server
+
+# tags
+tags:
+  - name: game
+    description: game requests
+  - name: polls
+    description: Polls requests
+  - name: pollReplies
+    description: Polls Replies requests
+  - name: report
+    description: Report requests
+  - name: auth
+    description: Admin authentication
+  - name: suggestions
+    description: suggestions trip
+
+# paths
+paths:
+  /login:
+    post:
+      summary: Authentication 
+      x-eov-operation-id: login
+      operationId: login
+      tags:
+        - auth
+      requestBody:
+        description: username and password
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: User points 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultError'
+  /leaderboard/{user_id}:
+    get:
+      summary: get leaderboard 
+      x-eov-operation-id: getLeaderboard
+      operationId: getLeaderboard
+      tags:
+        - game
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          description: The id of the user 
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of polls
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PollsResponse'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultError'
+  /register:
+    post:
+      summary: Authentication 
+      x-eov-operation-id: register
+      operationId: register
+      tags:
+        - auth
+      requestBody:
+        description: username and password
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+      responses:
+        '200':
+          description: Register response user data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisterResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultError'
+  /play:
+    post:
+      summary: Post user points 
+      x-eov-operation-id: postUserPoints
+      operationId: postUserPoints
+      tags:
+        - game
+      requestBody:
+        description: user and in/out stop
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlayRequest'
+      responses:
+        '200':
+          description: User points 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlayResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultError'
+  /polls/{poll_id}/answers/export:
+    get:
+      summary: export for answers 
+      x-eov-operation-id: exportAnswers
+      operationId: exportAnswers
+      tags:
+        - polls
+      parameters:
+        - name: poll_id
+          in: path
+          required: true
+          description: The id of the poll 
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The export file in csv
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Not found
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/DefaultError'
+  /polls:
+    post:
+      summary: Post a poll
+      x-eov-operation-id: postPoll
+      operationId: postPoll
+      tags:
+        - polls
+      requestBody:
+        description: Questions and answers
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PollRequest'
+      responses:
+        '200':
+          description: Poll correctly post
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PollResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultError'
+    get:
+      summary: List all polls
+      x-eov-operation-id: getPolls
+      operationId: getPolls
+      tags:
+        - polls
+      parameters:
+        - name: poll_status
+          in: query
+          required: false
+          description: The status of the polls to retrieve
+          schema:
+            $ref: '#/components/schemas/PollStatusEnum'
+      responses:
+        '200':
+          description: The list of polls
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PollsResponse'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultError'
+  /polls/{poll_id}:
+    get:
+      summary: Info for a specific poll
+      x-eov-operation-id: showPostById
+      operationId: showPostById
+      tags:
+        - polls
+      parameters:
+        - name: poll_id
+          in: path
+          required: true
+          description: The id of the poll to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The poll
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PollResponse'
+        '400':
+          description: Not found
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/DefaultError'
+    put:
+      summary: Update poll
+      x-eov-operation-id: updatePoll
+      operationId: updatePoll
+      tags:
+        - polls
+      parameters:
+        - name: poll_id
+          in: path
+          required: true
+          description: The id of the poll
+          schema:
+            type: string
+      requestBody:
+        description: Questions and answers
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PollRequest'
+      responses:
+        '200':
+          description: Update poll successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PollResponse'
+        '404':
+          description: Not found
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultError'
+    delete:
+      summary: Soft delete poll
+      x-eov-operation-id: softDeletePoll
+      operationId: softDeletePoll
+      tags:
+        - polls
+      parameters:
+        - name: poll_id
+          in: path
+          required: true
+          description: The id of the poll
+          schema:
+            type: string
+      responses:
+        '204':
+          description: SoftDelete poll successfully
+        '404':
+          description: Not found
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultError'
+  /polls/{poll_id}/report:
+    get:
+      summary: Report for poll
+      x-eov-operation-id: showPollReportById
+      operationId: showPollReportById
+      tags:
+        - report
+      parameters:
+        - name: poll_id
+          in: path
+          required: true
+          description: The id of the poll to report
+          schema:
+            type: string
+      responses:
+        '200':
+          description: poll and report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PollReportResponse'
+        '400':
+          description: Not found
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/DefaultError'
+  /polls/{poll_id}/status:
+    patch:
+      summary: change poll status
+      x-eov-operation-id: changePollStatus
+      operationId: changePollStatus
+      tags:
+        - polls
+      parameters:
+        - name: poll_id
+          in: path
+          required: true
+          description: The id of the poll
+          schema:
+            type: string
+      requestBody:
+        description: new status
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PollStatusRequest'
+      responses:
+        '200':
+          description:  poll status change successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PollResponse'
+        '404':
+          description: Not found
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultError'
+  /polls/{poll_id}/users/{user_id}:
+    get:
+      summary: Show poll for user 
+      x-eov-operation-id: showPollForUser
+      operationId: showPollForUser
+      tags:
+        - polls
+      parameters:
+        - name: poll_id
+          in: path
+          required: true
+          description: The id of the poll to retrieve
+          schema:
+            type: string
+        - name: user_id
+          in: path
+          required: true
+          description: The id of the user
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The poll
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PollResponse'
+        '400':
+          description: Not found
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/DefaultError'
+  /user/access:
+    post:
+      summary: access to app 
+      x-eov-operation-id: accessApp
+      operationId: accessApp
+      tags:
+        - game
+      requestBody:
+        description: user_id and permissions
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessRequest'
+      responses:
+        '200':
+          description:  user registered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessResponse'
+        '404':
+          description: Not found
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultError'
+  /users/{user_id}/polls/{poll_id}:
+    get:
+      summary: Info for a specific poll replies by user 
+      x-eov-operation-id: showPollRepliesByUser
+      operationId: showPollRepliesByUser
+      tags:
+        - pollReplies
+      parameters:
+        - name: poll_id
+          in: path
+          required: true
+          description: The id of the poll to retrieve
+          schema:
+            type: string
+        - name: user_id
+          in: path
+          required: true
+          description: The id of the user 
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The poll replies
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PollRepliesResponse'
+        '400':
+          description: Not found
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/DefaultError'
+    post:
+      summary: Post a poll replies
+      x-eov-operation-id: postPollReplies
+      operationId: postPollReplies
+      tags:
+        - pollReplies
+      parameters:
+        - name: poll_id
+          in: path
+          required: true
+          description: The id of the poll to retrieve
+          schema:
+            type: string
+        - name: user_id
+          in: path
+          required: true
+          description: The id of the user 
+          schema:
+            type: string
+      requestBody:
+        description: Questions id  and answers id
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PollRepliesRequest'
+      responses:
+        '200':
+          description: Poll_answers correctly post
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PollRepliesResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultError'      
+    delete:
+      summary: Soft delete poll replies
+      x-eov-operation-id: softDeletePollReplies
+      operationId: softDeletePollReplies
+      tags:
+        - pollReplies
+      parameters:
+        - name: poll_id
+          in: path
+          required: true
+          description: The id of the poll
+          schema:
+            type: string
+        - name: user_id
+          in: path
+          required: true
+          description: The id of the user 
+          schema:
+            type: string
+      responses:
+        '204':
+          description: SoftDelete poll replies successfully
+        '404':
+          description: Not found
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultError'
+  /users/{user_id}/suggestions:
+    get:
+      summary: get suggestions  
+      x-eov-operation-id: showSuggestions
+      operationId: showSuggestions
+      tags:
+        - suggestions
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          description: The id of the user
+          schema:
+            type: string
+      responses:
+        '200':
+          description: suggestions replies
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuggestionsResponse'
+        '400':
+          description: Not found
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/DefaultError'
+#components
+components:
+  #schemas
+  schemas:
+    AnswerOption:
+      type: object
+      required:
+      - answer_option_id
+      - text
+      properties:
+        answer_option_id:
+          type: number
+        text:
+          type: string
+    Info:
+      type: object
+      required:
+      - created_at
+      - update_at
+      properties:
+        created_at:
+          type: integer
+        update_at:
+          type: integer
+        deleted_at:
+          type: integer
+    Poll:
+      type: object
+      required:
+        - poll_id
+        - title
+        - time_to_show
+        - questions
+        - info
+        - status
+      properties:
+        poll_id:
+          type: string
+          readOnly: true
+        title:
+          type: string
+        description:
+          type: string
+        time_to_show:
+          type: integer
+        poll_status:
+          $ref: '#/components/schemas/PollStatusEnum'
+        info:
+          $ref: '#/components/schemas/Info'
+        questions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Question'
+        is_already_answered:
+          type: boolean
+    PollReplies:
+      type: object
+      required:
+        - user_id
+        - poll_id
+        - user_answers
+      properties:
+        user_id:
+          type: number
+        poll_id:
+          type: string
+        user_answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserAnswer'
+    PollStatusEnum:
+      type: string
+      enum:
+        - draft
+        - published
+        - closed
+    Question:
+      type: object
+      required:
+        - question_id
+        - text
+        - question_type
+      properties:
+        question_id:
+          type: number
+        text:
+          type: string
+        question_type:
+          $ref: '#/components/schemas/QuestionTypeEnum'
+        answer_options:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnswerOption'
+    QuestionTypeEnum:
+      type: string
+      enum:
+        - free_answer
+        - closed_answer
+        - multiple_answer
+    UserAnswer:
+      type: object
+      required:
+        - question_id
+        - question_text
+        - answer_text
+      properties:
+        question_id:
+          type: number
+        question_text:
+          type: string
+        answer_option_id:
+          type: number
+        answer_text: 
+          type: string
+    UserBackend:
+      type: object
+      required:
+        - username
+        - created_at
+      properties:
+        username:
+          type: string
+        created_at:
+          type: number
+    CodeEnum:
+      type: string
+      enum:
+        - result_available
+        - result_not_available
+        - consent_not_given
+    #request
+    AccessRequest:
+      type: object
+      required:
+        - user_id
+        - suggestions_consent
+        - gamification_consent
+        - survey_consent
+      properties:
+        user_id:
+          type: string
+        suggestions_consent:
+          type: boolean
+        gamification_consent:
+          type: boolean
+        survey_consent:
+          type: boolean
+    AnswerOptionIdRequest:
+      type: object
+      required:
+        - answer_option_id
+      properties:
+        answer_option_id:
+          type: number
+    AnswerOptionRequest:
+      type: object
+      required:
+        - text
+      properties:
+        text:
+          type: string
+    LoginRequest:
+      type: object 
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    RegisterRequest:
+      type: object 
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    PlayRequest:
+      type: object 
+      required:
+        - user_id
+        - in_stop_id
+        - out_stop_id
+      properties:
+        user_id:
+          type: string
+        in_stop_id:
+          type: string
+        out_stop_id:
+          type: string
+        otp_first_stop_id:
+          type: string
+        otp_last_stop_id:
+          type: string
+    PollRepliesRequest:
+      type: object
+      required:
+        - user_answers
+      properties:
+        user_answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserAnswerRequest'
+    PollRequest:
+      type: object
+      required:
+        - title
+        - description
+        - time_to_show
+        - questions
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        time_to_show:
+          type: integer
+        questions:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuestionRequest'
+    PollStatusRequest:
+      type: object
+      required:
+        - poll_status
+      properties:
+        poll_status:
+          $ref: '#/components/schemas/PollStatusEnum'
+    QuestionRequest:
+      type: object
+      required:
+        - text
+        - question_type
+      properties:
+        text:
+          type: string
+        question_type:
+          $ref: '#/components/schemas/QuestionTypeEnum'
+        answer_options:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnswerOptionRequest'
+    UserAnswerRequest:
+      type: object
+      required:
+        - question_id
+      properties:
+        question_id:
+          type: number
+        answer_text:
+          type: string
+        answer_option_id:
+          type: number
+        answer_option_ids:
+          type: array
+          items:
+            type: number
+    
+    #response
+    AccessResponse:
+      type: object
+      required: 
+        - poll_id
+      properties:
+        poll_id:
+          type: string
+    AnswerReportResponse:
+      type: object
+      required:
+        - answer_option_id
+        - answer_option_text
+        - number_of_answers
+      properties:
+        answer_option_id:
+          type: number
+        answer_option_text:
+          type: string
+        number_of_answers:
+          type: number
+    ClosedAnswerReportResponse:
+      $ref: '#/components/schemas/AnswerReportResponse'
+    FreeAnswerReportResponse:
+      type: object
+      required:
+        - answer_text
+      properties:
+        answer_text:
+          type: string
+    MultipleAnswerReportResponse:
+      $ref: '#/components/schemas/AnswerReportResponse'
+    LoginResponse:
+      type: object 
+      required:
+        - token
+      properties:
+        token:
+          type: string
+    RegisterResponse:
+      type: object 
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/UserBackend'
+    PlayResponse:
+      type: object 
+      required:
+        - user_id
+        - in_stop_id
+        - out_stop_id
+      properties:
+        user_id:
+          type: string
+        in_stop_id:
+          type: string
+        out_stop_id:
+          type: string
+    PollRepliesResponse:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/PollReplies'
+    PollReportResponse:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: object
+          properties:
+            title:
+              type: string
+            description:
+              type: string
+            poll_completed:
+              type: number
+            poll_status:
+              $ref: '#/components/schemas/PollStatusEnum'
+            reports:
+              type: array
+              items:
+                $ref: '#/components/schemas/QuestionReportResponse'
+    PollResponse:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/Poll'
+    PollsResponse:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Poll'
+    QuestionReportResponse:
+      type: object
+      required:
+        - question_id
+        - question_text
+        - question_type
+      properties:
+        question_id:
+          type: number
+        question_text:
+          type: string
+        question_type:
+          $ref: '#/components/schemas/QuestionTypeEnum'
+        closed_answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClosedAnswerReportResponse'
+        free_answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/FreeAnswerReportResponse'
+        multiple_answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/MultipleAnswerReportResponse'
+    SuggestionsResponse:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          $ref: '#/components/schemas/CodeEnum'
+        results:
+          type: string
+    #error
+    DefaultError:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+    ValidationError:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+        errors:
+          type: object
+    
+      
+    
+            
+          
+  

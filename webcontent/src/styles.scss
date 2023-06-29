@@ -1,0 +1,87 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-table
+{
+  background-color:transparent!important;  
+}
+table 
+{
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5em;
+  color: #2d477c;
+  font-weight: 500;
+  
+}
+.table-text
+{
+  color: #2d477c;
+  font-weight: 500;
+}
+table tr:last-child td /*To remove the last border*/
+{
+  border-bottom:0 solid
+}
+
+.body-color
+{
+  background-color: white;
+  color: #2d477c;
+  font-weight: 500;
+}
+
+.primary-color
+{
+  background-color: #fcc81d;
+}
+
+.utility-ligth-color
+{
+  background-color: #DDDDDD;
+}
+
+.utility-dark-color
+{
+  background-color: #b8bed2;
+}
+
+// .accent-color
+// {
+//   accent-color: #4682B4;
+// }
+
+.btn-primary
+{
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem; 
+  padding-left: 1rem;
+  padding-right: 1rem; 
+  margin-bottom: 0.5rem; 
+  font-weight: 600; 
+  border-radius: 1rem; 
+  border-width: 2px; 
+  border-color: #e5e5e5;
+  background-color: #fcc81d;
+  // box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
+}
+.btn-utility
+{
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem; 
+  padding-left: 1rem;
+  padding-right: 1rem; 
+  margin-bottom: 0.5rem; 
+  font-weight: 600; 
+  border-radius: 1rem; 
+  border-width: 2px; 
+  border-color: #e5e5e5;
+  background-color: white;
+  // box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
+}
