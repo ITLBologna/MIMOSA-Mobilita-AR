@@ -26,4 +26,4 @@ Here is the technical description of the virtual machine cloud instances deploye
 
 ### Acknowledgment
 
-MIMOSA Mobilità AR has been part of the [MIMOSA](https://www.fondazioneitl.org/en/project/mimosa-maritime-and-multimodal-sustainable-passenger-transport-solutions-and-services/)
+MIMOSA Mobilità AR has been part of the [MIMOSA](https://www.fondazioneitl.org/en/project/mimosa-maritime-and-multimodal-sustainable-passenger-transport-solutions-and-services/) project funded by the European Union’s Italy-Croatia CBC Programme strategic call. MIMOSA aims at improving the offer of multimodal sustainable passengers’ transport solutions and services by promoting a new cross-border approach for passenger mobility in the Italy-Croatia Programme area. This will be achieved through a range of multimodal solutions, innovative smart tools and technologies.
