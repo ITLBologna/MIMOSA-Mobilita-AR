@@ -1,27 +1,75 @@
-# MimosaItlWebcontent
+# webcontent
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.1.
+The webcontent project is an Angular frontend application that serves as a container for web pages to be displayed within a webview component in the Mimosa mobile application. It hosts various pages that provide informational content to the app users, such as the privacy policy, data usage guide, or any other relevant web content.
 
-## Development server
+## Installation and Dependencies:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This instructions refers to the Mimosa Production (or Development) AWS instance (see the main [README](../README.md))
 
-## Code scaffolding
+### 1. Install Node.js and npm (Node Package Manager) on the server
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+First check if Node.js already installed on the system with the following command:
 
-## Build
+```bash
+node -v
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+If Node.js is not installed, run the following commands:
 
-## Running unit tests
+```bash
+sudo apt update
+sudo apt update
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+The command `node-v` should now output the installed version of node.
 
-## Running end-to-end tests
+Now, you can install the Node Package Manager (NPM):
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+sudo apt install npm
+```
 
-## Further help
+### 2. Clone the repository
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Clone the Git repository of the webcontent project (or copy the webcontent folder) onto the server, in a folder of your choice (typically `/var/www`).
+
+Navigate to the project directory and install the required dependencies using these commands (assuming you put the webcontent folder in `/var/www`):
+
+```bash
+cd /var/www/webcontent
+npm install
+```
+
+### 3. Build
+
+Run the following command to build the project:
+
+```bash
+npm run build -- --configuration=production
+```
+
+### 4. Configuration
+
+Navigate to the dist folder:
+
+```bash
+cd dist
+```
+
+Create a new `env.js` and copy the following code:
+
+```js
+(function (window) {
+  window.__env = window.__env || {};
+
+  window.__env.production = true;
+  window.__env.API_BASE_PATH = ;
+  window.__env.stage = 'production';
+}(this));
+```
+
+Configure the API endpoints according to your web servers setup.
+
+### 5. Serve
+
+As a static website, the content of the dist folder can be served with any web server.

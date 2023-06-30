@@ -1,7 +1,11 @@
-# mimosa-itl-etl
+# etl
 Etl for Mimosa data
 
 Before starting you need to configure the a `.env` file and the add the agencies data in each file.
+
+## Prerequisites:
+
+Ensure that Python is installed on your machine along with the necessary packages and dependencies required for the ETL process.
 
 ## 1. Download the data
 `python download-dataset.py`
